@@ -1,5 +1,6 @@
 import { createListing } from "../api/listings.js";
 import { renderUserHeader, getAuth } from "../header.js";
+import { notify } from "../utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const { authToken, userProfile } = getAuth();
@@ -33,7 +34,7 @@ function bindActions(authToken) {
       const imageUrl = document.getElementById("imageUrl").value.trim();
 
       if (!title || !description || !startingPrice || !endsAt) {
-        alert("Fill in all required fields");
+        notify("Fill in all required fields", "error");
         return;
       }
 
@@ -48,11 +49,11 @@ function bindActions(authToken) {
 
       try {
         await createListing(data, authToken);
-        alert("Listing created successfully!");
-        window.location.href = "/index.html";
+        notify("Listing created successfully!", "success");
+        window.location.href = "../../index.html";
       } catch (err) {
         console.error(err);
-        alert("Failed to create listing");
+        notify("Failed to create listing", "error");
       }
     });
 }
