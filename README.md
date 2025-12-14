@@ -16,7 +16,7 @@ Clone the repository git clone https://github.com/kevindjenhansen/bidbazar-aucti
 Open the project folder in your editor of choice
 Open index.html in your browser (Remember to replace the API key in the config.js if needed)
 
-And if you just wanna try it out the project is launched on github pages at "https://kevindjenhansen.github.io/bidbazar-auction/index.html"
+And if you just wanna try it out the project is launched on github pages at "https://kevindjenhansen.github.io/bidbazar-auction/"
 
 Scripts:
 This project uses npm to manage development dependencies.
