@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BidBazar - User Profile</title>
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geologica:wght@200;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Geologica", sans-serif;
+        line-height: 1.5;
+      }
+      .h1 {
+        font-size: 32px;
+        font-weight: 700;
+      }
+      .h2 {
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .h3 {
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .body-text {
+        font-size: 16px;
+      }
+      .label-text {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-[#D9D9D9] flex flex-col min-h-screen">
+    <!-- HEADER -->
+    <header class="bg-white shadow">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <a href="/index.html" class="flex items-center gap-4">
+          <img
+            src="/assets/logo/bidbazar-logo.png"
+            width="64"
+            height="64"
+            alt="logo"
+          />
+          <span class="h1 hidden sm:block">BidBazar</span></a
+        >
+        <div id="userHeader" class="flex items-center gap-4">
+          <a
+            href="html/auth/login.html"
+            id="loginBtnHeader"
+            class="bg-[#2482ED] border border-black text-white px-5 py-2 rounded-[15px] hover:opacity-90"
+          >
+            Login
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Profile -->
+    <main class="grow max-w-4xl mx-auto w-full px-6 py-10">
+      <div
+        id="notificationContainer"
+        class="fixed top-5 right-5 flex flex-col gap-2 z-50"
+      ></div>
+
+      <div class="bg-white rounded-[15px] shadow overflow-hidden mb-6">
+        <div id="bannerContainer" class="w-full h-48 bg-gray-300 relative">
+          <img
+            id="bannerImg"
+            src="https://via.placeholder.com/1500x500"
+            alt="Banner"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <div class="flex flex-col sm:flex-row p-6 gap-6">
+          <div
+            class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 flex-1"
+          >
+            <img
+              id="avatarImg"
+              src="https://via.placeholder.com/150"
+              alt="Avatar"
+              class="w-28 h-28 rounded-full border object-cover"
+            />
+            <div class="flex flex-col">
+              <h2 id="username" class="h2">Username</h2>
+              <p id="email" class="label-text text-gray-500">
+                user@example.com
+              </p>
+              <p id="bio" class="body-text mt-2">This is the user bio.</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-start sm:items-end gap-4">
+            <button
+              id="editProfileBtn"
+              class="bg-[#2482ED] text-white px-6 py-2 rounded-[15px] hover:opacity-90"
+            >
+              <i class="fa-solid fa-pen mr-2"></i> Edit Profile
+            </button>
+            <div
+              class="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-[15px]"
+            >
+              <i class="fa-solid fa-coins text-lg"></i>
+              <span id="credits" class="font-bold text-[#2482ED]">1000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-[15px] shadow mb-6">
+        <div class="flex border-b border-gray-200">
+          <button
+            data-tab="listings"
+            class="flex-1 py-3 text-center font-semibold hover:bg-gray-100 tab-btn active"
+          >
+            My Listings
+          </button>
+          <button
+            data-tab="bids"
+            class="flex-1 py-3 text-center font-semibold hover:bg-gray-100 tab-btn"
+          >
+            My Bids
+          </button>
+          <button
+            data-tab="wins"
+            class="flex-1 py-3 text-center font-semibold hover:bg-gray-100 tab-btn"
+          >
+            My Wins
+          </button>
+        </div>
+
+        <div
+          id="tabContent"
+          class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        ></div>
+      </div>
+
+      <div
+        id="editProfileModal"
+        class="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center hidden"
+      >
+        <div class="bg-white rounded-[15px] w-full max-w-md p-6 relative">
+          <h3 class="h2 mb-4">Edit Profile</h3>
+          <div class="flex flex-col gap-4">
+            <input
+              id="editAvatar"
+              type="text"
+              placeholder="Avatar URL"
+              class="border px-3 py-2 rounded"
+            />
+            <input
+              id="editBanner"
+              type="text"
+              placeholder="Banner URL"
+              class="border px-3 py-2 rounded"
+            />
+            <textarea
+              id="editBio"
+              placeholder="Bio"
+              class="border px-3 py-2 rounded"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="flex justify-between mt-6">
+            <button
+              id="cancelEdit"
+              class="px-4 py-2 rounded border hover:bg-gray-100"
+            >
+              Cancel
+            </button>
+            <button
+              id="confirmEdit"
+              class="px-4 py-2 rounded bg-[#2482ED] text-white hover:opacity-90"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="editListingModal"
+        class="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center hidden"
+      >
+        <div class="bg-white rounded-[15px] w-full max-w-lg p-6 relative">
+          <h3 class="h2 mb-4">Edit Listing</h3>
+          <div class="flex flex-col gap-4">
+            <input
+              id="editListingTitle"
+              type="text"
+              placeholder="Title"
+              class="border px-3 py-2 rounded"
+            />
+            <textarea
+              id="editListingDescription"
+              placeholder="Description"
+              class="border px-3 py-2 rounded"
+              rows="3"
+            ></textarea>
+            <input
+              id="editListingMedia"
+              type="text"
+              placeholder="Media URL (comma separated)"
+              class="border px-3 py-2 rounded"
+            />
+            <input
+              id="editListingTags"
+              type="text"
+              placeholder="Tags (comma separated)"
+              class="border px-3 py-2 rounded"
+            />
+            <input
+              id="editListingEndsAt"
+              type="datetime-local"
+              class="border px-3 py-2 rounded"
+            />
+          </div>
+          <div class="flex justify-between mt-6">
+            <button
+              id="deleteListingBtn"
+              class="px-4 py-2 rounded border text-white bg-[#C40C0C] hover:bg-gray-100"
+            >
+              <i class="fa-solid fa-trash mr-2"></i> Delete Listing
+            </button>
+            <div class="flex gap-2">
+              <button
+                id="cancelEditListing"
+                class="px-4 py-2 rounded border hover:bg-gray-100"
+              >
+                Cancel
+              </button>
+              <button
+                id="confirmEditListing"
+                class="px-4 py-2 rounded bg-[#2482ED] text-white hover:opacity-90"
+              >
+                <i class="fa-solid fa-pen mr-2"></i> Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#003357] text-white mt-auto">
+      <div class="max-w-7xl mx-auto px-6 py-6 flex items-center gap-4">
+        <img
+          src="/assets/logo/bidbazar-logo.png"
+          width="48"
+          height="48"
+          alt="logo"
+        />
+        <p class="label-text">© 2025 BidBazar. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/js/profile/profile.js"></script>
+  </body>
+</html>

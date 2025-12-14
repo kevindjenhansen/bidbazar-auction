@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BidBazar - Create Listing</title>
+
+<link rel="stylesheet" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@200;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+    body {
+        font-family: "Geologica", sans-serif;
+        line-height: 1.5;
+    }
+    .h1 { font-size: 32px; font-weight: 700; }
+    .h2 { font-size: 24px; font-weight: 700; }
+    .h3 { font-size: 20px; font-weight: 700; }
+    .body-text { font-size: 16px; }
+    .label-text { font-size: 14px; }
+</style>
+</head>
+
+<body class="bg-[#D9D9D9] flex flex-col min-h-screen">
+
+<!-- HEADER -->
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/index.html" class="flex items-center gap-4">
+            <img src="/assets/logo/bidbazar-logo.png" width="64" height="64" alt="logo">
+            <span class="h1 hidden sm:block">BidBazar</span></a>
+
+        <div id="userHeader" class="flex items-center gap-4">
+            <a href="html/auth/login.html"
+               id="loginBtnHeader"
+               class="bg-[#2482ED] border border-black text-white px-5 py-2 rounded-[15px] hover:opacity-90">
+                Login
+            </a>
+        </div>
+
+    </div>
+</header>
+
+</header>
+
+<!-- Input Form Card -->
+<main class="grow max-w-7xl mx-auto w-full px-6 py-10 flex justify-center">
+
+    <div class="bg-white shadow-lg rounded-2xl p-8 w-full max-w-2xl">
+        <h2 class="h2 text-center text-gray-900">Create Listing</h2>
+        <p class="label-text text-center text-gray-600 mb-6">Please provide the details for your new auction.</p>
+
+        <label for="title" class="label-text text-gray-700">Title</label>
+        <input id="title" type="text" placeholder="Enter the title" class="w-full border rounded-lg p-3 mt-1 mb-4 body-text focus:outline-none focus:ring-2 focus:ring-blue-300">
+
+        <label for="description" class="label-text text-gray-700">Description</label>
+        <textarea id="description" placeholder="Describe the item" class="w-full border rounded-lg p-3 mt-1 mb-4 body-text focus:outline-none focus:ring-2 focus:ring-blue-300"></textarea>
+
+        <label for="tags" class="label-text text-gray-700">Tags (Optional)</label>
+        <input id="tags" type="text" placeholder="Enter tags (comma separated)" class="w-full border rounded-lg p-3 mt-1 mb-4 body-text focus:outline-none focus:ring-2 focus:ring-blue-300">
+
+        <label for="startPrice" class="label-text text-gray-700">Starting Price</label>
+        <input id="startPrice" type="number" placeholder="Enter starting price" class="w-full border rounded-lg p-3 mt-1 mb-4 body-text focus:outline-none focus:ring-2 focus:ring-blue-300">
+
+        <label for="endDate" class="label-text text-gray-700">Auction End Date</label>
+        <input id="endDate" type="datetime-local" class="w-full border rounded-lg p-3 mt-1 mb-4 body-text focus:outline-none focus:ring-2 focus:ring-blue-300">
+
+        <label for="imageUrl" class="label-text text-gray-700">Image URL (Optional)</label>
+        <input id="imageUrl" type="url" placeholder="Enter image URL" class="w-full border rounded-lg p-3 mt-1 mb-6 body-text focus:outline-none focus:ring-2 focus:ring-blue-300">
+
+        <div class="flex flex-col gap-3">
+            <button id="createListingBtn" class="w-full rounded-lg p-3 text-white body-text hover:opacity-90" style="background:#2482ED">Create Listing</button>
+            <button id="cancelBtn" class="w-full rounded-lg p-2 border border-gray-400 hover:bg-gray-100 body-text">Cancel</button>
+        </div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-[#003357] text-white mt-auto">
+    <div class="max-w-7xl mx-auto px-6 py-6 flex items-center gap-4">
+        <img src="/assets/logo/bidbazar-logo.png" width="48" height="48" alt="logo">
+        <p class="label-text">© 2025 BidBazar. All rights reserved.</p>
+    </div>
+</footer>
+
+<script type="module" src="/js/listings/createListing.js"></script>
+</body>
+</html>

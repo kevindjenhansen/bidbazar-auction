@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BidBazar - Listing Details</title>
+
+<link rel="stylesheet" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@200;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+    body {
+        font-family: "Geologica", sans-serif;
+        line-height: 1.5;
+    }
+    .h1 { font-size: 32px; font-weight: 700; }
+    .h2 { font-size: 24px; font-weight: 700; }
+    .h3 { font-size: 20px; font-weight: 700; }
+    .body-text { font-size: 16px; }
+    .label-text { font-size: 14px; }
+</style>
+</head>
+
+<body class="bg-[#D9D9D9] flex flex-col min-h-screen">
+
+<!-- HEADER -->
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-4">
+        <img src="/assets/logo/bidbazar-logo.png" width="64" height="64" alt="logo">
+          <span class="h1 hidden sm:block">BidBazar</span></a>
+
+        <div id="userHeader" class="flex items-center gap-4">
+            <a href="html/auth/login.html"
+               id="loginBtnHeader"
+               class="bg-[#2482ED] border border-black text-white px-5 py-2 rounded-[15px] hover:opacity-90">Login</a>
+        </div>
+
+    </div>
+</header>
+
+<!-- Listing -->
+<main class="grow max-w-4xl mx-auto w-full px-6 py-10">
+<div id="notificationContainer" class="fixed top-5 right-5 flex flex-col gap-2 z-50"></div>
+  <div id="listingContainer" class="bg-white rounded-[15px] shadow p-6 flex flex-col gap-4"></div>
+
+    <div class="bg-white rounded-[15px] shadow p-6 mt-6">
+        <h3 class="h3 mb-3">Place a Bid</h3>
+         <div class="flex flex-col sm:flex-row gap-3 items-center">
+         <input id="bidAmount" type="number" placeholder="Enter amount" class="border px-3 py-2 rounded-[15px] flex-1 w-full sm:w-auto">
+         <button id="placeBidBtn" class="px-4 py-2 rounded-[15px] bg-[#2482ED] text-white hover:opacity-90 w-full sm:w-auto">Place Bid</button>
+         </div>
+        </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-[#003357] text-white mt-auto">
+  <div class="max-w-7xl mx-auto px-6 py-6 flex items-center gap-4">
+    <img src="/assets/logo/bidbazar-logo.png" width="48" height="48" alt="logo">
+    <p class="label-text">© 2025 BidBazar. All rights reserved.</p>
+  </div>
+</footer>
+
+<script type="module" src="/js/listings/listing.js"></script>
+</body>
+</html>
