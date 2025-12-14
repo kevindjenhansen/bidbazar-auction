@@ -38,6 +38,11 @@ export async function renderUserHeader() {
   const header = document.getElementById("userHeader");
   if (!header) return;
 
+  const pathPrefix = (() => {
+    const depth = window.location.pathname.split("/").length - 2;
+    return "../".repeat(depth);
+  })();
+
   if (authToken && userProfile) {
     header.innerHTML = `
       <div class="flex items-center gap-3 px-4 py-2 rounded-[15px] border border-[#003BFF]" style="background:rgba(70,166,255,0.4)">
@@ -49,9 +54,10 @@ export async function renderUserHeader() {
           }</div>
         </div>
       </div>
-      <a href="/html/profile/profile.html" class="flex items-center gap-2 hover:opacity-80">
+      <a href="${pathPrefix}html/profile/profile.html" class="flex items-center gap-2 hover:opacity-80">
         <img src="${
-          userProfile.avatar?.url || "/assets/logo/bidbazar-logo.png"
+          userProfile.avatar?.url ||
+          `${pathPrefix}assets/logo/bidbazar-logo.png`
         }" class="w-10 h-10 rounded-full border object-cover" />
         <span class="label-text font-semibold hidden sm:block">${
           userProfile.name
@@ -62,11 +68,11 @@ export async function renderUserHeader() {
 
     document.getElementById("logoutBtn").onclick = () => {
       localStorage.clear();
-      window.location.href = "/index.html";
+      window.location.href = `${pathPrefix}index.html`;
     };
   } else {
     header.innerHTML = `
-      <a href="/html/auth/login.html" class="bg-[#2482ED] border border-black text-white px-5 py-2 rounded-[15px] hover:opacity-90">Login</a>
+      <a href="${pathPrefix}html/auth/login.html" class="bg-[#2482ED] border border-black text-white px-5 py-2 rounded-[15px] hover:opacity-90">Login</a>
     `;
   }
 }
