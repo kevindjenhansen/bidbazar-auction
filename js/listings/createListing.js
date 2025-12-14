@@ -1,6 +1,6 @@
 // /js/listings/createListing.js
-import { createListing } from "/js/api/listings.js";
-import { renderUserHeader, getAuth } from "/js/header.js";
+import { createListing } from "../api/listings.js";
+import { renderUserHeader, getAuth } from "./js/header.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const { authToken, userProfile } = getAuth();
