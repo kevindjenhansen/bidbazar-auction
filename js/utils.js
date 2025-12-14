@@ -1,4 +1,3 @@
-// utils.js
 export function notify(message, type = "success", duration = 3000) {
   const container = document.getElementById("notificationContainer");
   if (!container) return; 
