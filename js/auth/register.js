@@ -40,7 +40,7 @@ registerBtn.addEventListener("click", async (e) => {
         }
 
         notify("Account created successfully! You can now log in.", "success");
-        window.location.href = "login.html";
+        window.location.href = "../../login.html";
 
     } catch (error) {
         console.error("Registration error:", error);

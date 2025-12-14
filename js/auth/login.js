@@ -37,7 +37,7 @@ loginBtn.addEventListener("click", async () => {
 
         notify("Login successful!", "success");
 
-        window.location.href = "/index.html";
+        window.location.href = "../../index.html";
 
     } catch (err) {
         notify(err.message, "error");
