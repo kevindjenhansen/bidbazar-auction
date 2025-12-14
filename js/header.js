@@ -61,10 +61,10 @@ export async function renderUserHeader() {
     `;
     document.getElementById("logoutBtn").onclick = () => {
       localStorage.clear();
-      window.location.href = "/index.html";
+      window.location.href = "../../index.html";
     };
   } else {
-    header.innerHTML = `<a href="html/auth/login.html" class="bg-[#2482ED] border border-black text-white px-5 py-2 rounded-[15px] hover:opacity-90"> Login </a>`;
+    header.innerHTML = `<a href="../../html/auth/login.html" class="bg-[#2482ED] border border-black text-white px-5 py-2 rounded-[15px] hover:opacity-90"> Login </a>`;
   }
 }
 
