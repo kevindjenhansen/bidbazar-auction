@@ -1,6 +1,5 @@
-// /js/listings/createListing.js
 import { createListing } from "../api/listings.js";
-import { renderUserHeader, getAuth } from "./js/header.js";
+import { renderUserHeader, getAuth } from "..header.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const { authToken, userProfile } = getAuth();
@@ -10,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  renderUserHeader(); // update header dynamically
+  renderUserHeader();
   bindActions(authToken);
 });
 
