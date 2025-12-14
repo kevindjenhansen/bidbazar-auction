@@ -38,10 +38,8 @@ export async function renderUserHeader() {
   const header = document.getElementById("userHeader");
   if (!header) return;
 
-  const pathPrefix = (() => {
-    const depth = window.location.pathname.split("/").length - 2;
-    return "../".repeat(depth);
-  })();
+  const isGitHubPages = location.hostname.includes("github.io");
+  const repoBase = isGitHubPages ? "/bidbazar-auction/" : "./";
 
   if (authToken && userProfile) {
     header.innerHTML = `
@@ -54,10 +52,9 @@ export async function renderUserHeader() {
           }</div>
         </div>
       </div>
-      <a href="${pathPrefix}html/profile/profile.html" class="flex items-center gap-2 hover:opacity-80">
+      <a href="${repoBase}html/profile/profile.html" class="flex items-center gap-2 hover:opacity-80">
         <img src="${
-          userProfile.avatar?.url ||
-          `${pathPrefix}assets/logo/bidbazar-logo.png`
+          userProfile.avatar?.url || `${repoBase}assets/logo/bidbazar-logo.png`
         }" class="w-10 h-10 rounded-full border object-cover" />
         <span class="label-text font-semibold hidden sm:block">${
           userProfile.name
@@ -65,15 +62,12 @@ export async function renderUserHeader() {
       </a>
       <button id="logoutBtn" class="bg-[#2482ED] text-white px-4 py-2 rounded-[15px] hover:opacity-90">Logout</button>
     `;
-
     document.getElementById("logoutBtn").onclick = () => {
       localStorage.clear();
-      window.location.href = `${pathPrefix}index.html`;
+      window.location.href = `${repoBase}index.html`;
     };
   } else {
-    header.innerHTML = `
-      <a href="${pathPrefix}html/auth/login.html" class="bg-[#2482ED] border border-black text-white px-5 py-2 rounded-[15px] hover:opacity-90">Login</a>
-    `;
+    header.innerHTML = `<a href="${repoBase}html/auth/login.html" class="bg-[#2482ED] border border-black text-white px-5 py-2 rounded-[15px] hover:opacity-90">Login</a>`;
   }
 }
 
