@@ -49,22 +49,25 @@ export async function renderUserHeader() {
           }</div>
         </div>
       </div>
-      <a href="html/profile/profile.html" class="flex items-center gap-2 hover:opacity-80">
+      <a href="/html/profile/profile.html" class="flex items-center gap-2 hover:opacity-80">
         <img src="${
           userProfile.avatar?.url || "/assets/logo/bidbazar-logo.png"
         }" class="w-10 h-10 rounded-full border object-cover" />
-        <span class="label-text font-semibold hidden sm:block"> ${
+        <span class="label-text font-semibold hidden sm:block">${
           userProfile.name
-        } </span>
+        }</span>
       </a>
-      <button id="logoutBtn" class="bg-[#2482ED] text-white px-4 py-2 rounded-[15px] hover:opacity-90"> Logout </button>
+      <button id="logoutBtn" class="bg-[#2482ED] text-white px-4 py-2 rounded-[15px] hover:opacity-90">Logout</button>
     `;
+
     document.getElementById("logoutBtn").onclick = () => {
       localStorage.clear();
-      window.location.href = "index.html";
+      window.location.href = "/index.html";
     };
   } else {
-    header.innerHTML = `<a href="html/auth/login.html" class="bg-[#2482ED] border border-black text-white px-5 py-2 rounded-[15px] hover:opacity-90"> Login </a>`;
+    header.innerHTML = `
+      <a href="/html/auth/login.html" class="bg-[#2482ED] border border-black text-white px-5 py-2 rounded-[15px] hover:opacity-90">Login</a>
+    `;
   }
 }
 
