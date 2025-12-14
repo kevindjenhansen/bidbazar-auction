@@ -49,7 +49,7 @@ export async function renderUserHeader() {
           }</div>
         </div>
       </div>
-      <a href="/html/profile/profile.html" class="flex items-center gap-2 hover:opacity-80">
+      <a href="../../html/profile/profile.html" class="flex items-center gap-2 hover:opacity-80">
         <img src="${
           userProfile.avatar?.url || "/assets/logo/bidbazar-logo.png"
         }" class="w-10 h-10 rounded-full border object-cover" />
