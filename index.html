@@ -1,145 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BidBazar - Auction House</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Geologica:wght@200;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+  <meta
+    name="description"
+    content="BidBazar is an auction platform where users can browse listings, create auctions, and place bids."
+  />
 
-    <style>
-      body {
-        font-family: "Geologica", sans-serif;
-        line-height: 1.5;
-      }
-      .h1 {
-        font-size: 32px;
-        font-weight: 700;
-      }
-      .h2 {
-        font-size: 24px;
-        font-weight: 700;
-      }
-      .h3 {
-        font-size: 20px;
-        font-weight: 700;
-      }
-      .body-text {
-        font-size: 16px;
-      }
-      .label-text {
-        font-size: 14px;
-      }
-    </style>
-  </head>
+  <title>BidBazar</title>
 
-  <body class="bg-[#D9D9D9] flex flex-col min-h-screen">
-    <!-- HEADER -->
-    <header class="bg-white shadow">
-      <div
-        class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
-      >
-        <a href="index.html" class="flex items-center gap-4">
-          <img
-            src="assets/logo/bidbazar-logo.png"
-            width="64"
-            height="64"
-            alt="logo"
-          />
-          <span class="h1 hidden sm:block">BidBazar</span></a
-        >
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="icon" type="image/png" href="./assets/logo/bidbazar-logo.png" />
+</head>
 
-        <div id="userHeader" class="flex items-center gap-4">
-          <a
-            href="html/auth/login.html"
-            id="loginBtnHeader"
-            class="bg-[#2482ED] border border-black text-white px-5 py-2 rounded-[15px] hover:opacity-90"
-            >Login</a
-          >
+<body class="min-h-screen bg-gray-100 text-gray-900">
+  <header class="border-b border-gray-200 bg-white">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+      <a href="./index.html" class="flex items-center gap-3">
+        <img
+          src="./assets/logo/bidbazar-logo.png"
+          alt="BidBazar logo"
+          class="h-10 w-10 object-contain"
+        />
+
+        <div>
+          <p class="text-lg font-bold text-gray-950">BidBazar</p>
+          <p class="text-xs font-semibold uppercase tracking-wider text-blue-700">
+            Online Auctions
+          </p>
         </div>
+      </a>
+
+      <div id="userHeader" class="flex items-center gap-3">
+        <!-- Header content is rendered by js/header.js -->
       </div>
-    </header>
+    </div>
+  </header>
 
-    <!-- Auction List -->
-    <main class="grow max-w-7xl mx-auto w-full px-6 py-10">
-      <div
-        id="notificationContainer"
-        class="fixed top-5 right-5 flex flex-col gap-2 z-50"
-      ></div>
+  <main class="mx-auto max-w-6xl px-4 py-8">
+    <section class="mb-8 border-b border-gray-200 pb-8">
+      <div class="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+        <div>
+          <h1 class="text-4xl font-bold tracking-tight text-gray-950 md:text-5xl">
+            Browse auctions
+          </h1>
 
-      <div class="flex flex-wrap items-center justify-between gap-5 mb-10">
-        <div class="flex flex-wrap gap-3 items-center">
-          <input
-            id="searchInput"
-            class="px-4 py-2 border border-gray-400 rounded-[15px] body-text bg-white"
-            placeholder="Search auctions..."
-          />
+          <p class="mt-3 max-w-2xl text-base leading-7 text-gray-600">
+            Search active listings, filter by tag, and place bids on items from other users.
+          </p>
+        </div>
 
+        <a
+          href="./html/listings/createListing.html"
+          class="inline-flex w-fit items-center justify-center rounded-md bg-blue-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-800 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-blue-100"
+        >
+          + Create Listing
+        </a>
+      </div>
+    </section>
+
+    <section id="auctions">
+      <div class="mb-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+        <div class="grid gap-3 md:grid-cols-[180px_1fr_auto_auto]">
+          <label class="sr-only" for="tagFilter">Filter by tag</label>
           <select
             id="tagFilter"
-            class="px-4 py-2 border border-gray-400 rounded-[15px] label-text bg-white"
+            class="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-100"
           >
             <option value="">All Tags</option>
           </select>
 
+          <label class="sr-only" for="searchInput">Search auctions</label>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search auctions..."
+            class="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-100"
+          />
+
           <button
             id="searchBtn"
-            class="px-4 py-2 border border-black rounded bg-white label-text hover:bg-gray-100"
+            type="button"
+            class="rounded-md bg-blue-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-100"
           >
             Search
           </button>
 
           <button
             id="activeBtn"
-            class="px-4 py-2 border border-black rounded bg-white label-text hover:bg-gray-100"
+            type="button"
+            class="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 transition hover:border-blue-600 hover:text-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-100"
           >
             Active Only
           </button>
         </div>
-
-        <a
-          href="html/listings/createListing.html"
-          class="bg-[#00B30C] border border-black text-white px-5 py-2 rounded-[15px] hover:opacity-90 flex items-center gap-2"
-        >
-          <span class="text-xl">+</span>Create New Listing</a
-        >
       </div>
-
-      <h1 class="h1">Auctions</h1>
-      <p class="body-text mb-6">Place bids on exclusive items.</p>
 
       <div
         id="auctionGrid"
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
       ></div>
 
       <div
         id="pagination"
-        class="flex justify-center gap-2 mt-10 flex-wrap"
+        class="mt-8 flex flex-wrap justify-center gap-2"
       ></div>
-    </main>
+    </section>
+  </main>
 
-    <!-- Footer -->
-    <footer class="bg-[#003357] text-white mt-auto">
-      <div class="max-w-7xl mx-auto px-6 py-6 flex items-center gap-4">
-        <img
-          src="assets/logo/bidbazar-logo.png"
-          width="48"
-          height="48"
-          alt="logo"
-        />
-        <p class="label-text">© 2025 BidBazar. All rights reserved.</p>
-      </div>
-    </footer>
+  <footer class="mt-10 border-t border-gray-200 bg-white">
+    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between">
+      <p>© 2025 BidBazar</p>
+      <p>HTML, JavaScript, and Tailwind CSS</p>
+    </div>
+  </footer>
 
-    <script type="module" src="js/main.js"></script>
-  </body>
+  <script type="module" src="./js/main.js"></script>
+</body>
 </html>
