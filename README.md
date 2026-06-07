@@ -1,44 +1,67 @@
-BidBazar - Auction House
+# BidBazar - Auction House
 
-A simple post feed application with authentication, search and CRUD functions. Users can register, log in, see their profile, edit their profile, create auctions, bid on auctions, edit them, delete them, and search and filter for auction.
+BidBazar is a front-end auction marketplace built for Noroff Semester Project 2. Users can browse auction listings, search and filter auctions, register, log in, view profiles, create listings, place bids, edit their own listings, and delete listings.
 
-Prerequisites:
+## Live Site
 
-You must have access to the Noroff API with an "Noroff API Key" from "https://docs.noroff.dev/docs/v2/auth/api-key" and a valid @stud.noroff.no email in order to fetch and view auctions.
+[View BidBazar on GitHub Pages](https://kevindjenhansen.github.io/bidbazar-auction/)
 
-Installation:
+## Repository
 
-Option 1 -
-You can download the project as a zip file and run it using VS Code Live Server, or serve with Node.js (npx serve).
+[GitHub Repository](https://github.com/kevindjenhansen/bidbazar-auction)
 
-Option 2 -
-Clone the repository git clone https://github.com/kevindjenhansen/bidbazar-auction.git cd bidbazar-auction
-Open the project folder in your editor of choice
-Open index.html in your browser (Remember to replace the API key in the config.js if needed)
+## Project Overview
 
-And if you just wanna try it out the project is launched on github pages at "https://kevindjenhansen.github.io/bidbazar-auction/"
+The goal of this project was to build an auction website using HTML, JavaScript, and Tailwind CSS while working with the Noroff Auction API.
 
-Scripts:
-This project uses npm to manage development dependencies.
+The application allows users to explore auction listings and interact with auctions when authenticated. Logged-in users can create listings, place bids, manage their own listings, and view profile information such as credits.
 
-Install all dependencies
+## Features
+
+- Browse auction listings
+- Search auctions by title or description
+- Filter auctions by tag
+- Show active auctions only
+- View single listing details
+- Register with a `@stud.noroff.no` email
+- Log in and log out
+- View user profile and credits
+- Create new auction listings
+- Edit own listings
+- Delete own listings
+- Place bids on active auctions
+- View seller, posted date, current bid, time left, and total bids
+- Responsive layout
+- Tailwind CSS styling
+
+## Built With
+
+- HTML
+- JavaScript
+- Tailwind CSS
+- Noroff Auction API
+
+## Prerequisites
+
+You need the following installed:
+
+- Node.js
+- npm
+- VS Code or another code editor
+- Live Server extension, or another local server
+
+You also need:
+
+- A valid `@stud.noroff.no` email
+- A Noroff API key
+- Access to the Noroff Auction API
+
+API key documentation:  
+[https://docs.noroff.dev/docs/v2/auth/api-key](https://docs.noroff.dev/docs/v2/auth/api-key)
+
+## Installation
+
+Clone the repository:
 
 ```bash
-npm install
-```
-
-Compiles Tailwind in watch mode
-
-```bash
-npm run dev
-```
-
-Compiles and minifies Tailwind for production
-
-```bash
-npm run build
-```
-
-📜 License
-
-This project is open-source under the MIT License.
+git clone https://github.com/kevindjenhansen/bidbazar-auction.git
